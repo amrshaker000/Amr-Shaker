@@ -25,7 +25,7 @@ const projects: Project[] = [
     title: "Ronaq Stickers Store",
     description:
       "A business project for producing and selling high-quality stickers. The project covers design, printing, cutting, packaging, and sales management.",
-    image: "/preview/modern-ecommerce-interface.png",
+    image: "/1.jpg",
     technologies: ["Design", "Printing", "Cutting", "Packaging", "Customer Service"],
     links: [
       {
@@ -46,7 +46,7 @@ const projects: Project[] = [
     title: "OriginTrace",
     description:
       "A business project for providing a secure, blockchain‑certified marketplace for used electronics.",
-    image: "/preview/task-management-dashboard.png",
+    image: "/2.jpg",
     technologies: ["Blockchain", "Smart Contracts", "Digital Warranties", "Marketplace"],
     links: [
       {
@@ -67,7 +67,7 @@ const projects: Project[] = [
     title: "Egyptian National Front Party",
     description:
       "A comprehensive system for managing party members' data with a modern, responsive interface.",
-    image: "/preview/project4.png",
+    image: "/3.jpg",
     technologies: ["React", "TypeScript", "Redux", "Tailwind CSS", "Vite"],
     links: [
       {
@@ -88,7 +88,7 @@ const projects: Project[] = [
     title: "Adam Photography Portfolio",
     description:
       "A portfolio website showcasing photography works with sections for about, gallery, and contact.",
-    image: "/preview/social-media-analytics-dashboard.png",
+    image: "/4.jpg",
     technologies: ["JavaScript", "FastAPI", "Tailwind CSS", "Firebase"],
     links: [
       {
