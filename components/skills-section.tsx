@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Briefcase, Code, Compass, Globe } from "lucide-react"
-import { Global } from "recharts";
+import Image from "next/image"
 
 interface SkillItem {
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
@@ -61,8 +61,16 @@ export function SkillsSection() {
   }, [])
 
   return (
-    <section id="skills" ref={sectionRef} className="py-20">
-      <div className="container mx-auto px-6">
+    <div className="min-h-screen flex flex-col">
+      <section id="skills" ref={sectionRef} className="py-20 relative flex-1">
+        {/* Desktop Background */}
+        <div className="hidden md:block absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(/amr-casual.jpg)' }}></div>
+        {/* Mobile Background */}
+        <div className="md:hidden absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: 'url(/amr-casual1.jpg)' }}></div>
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-black/60"></div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <div className={`transition-all duration-800 ${isVisible ? "animate-slide-up" : "opacity-0 translate-y-10"}`}>
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text">Skills & Expertise</h2>
 
@@ -99,6 +107,7 @@ export function SkillsSection() {
           </div>
         </div>
       </div>
-    </section>
+      </section>
+    </div>
   )
 }

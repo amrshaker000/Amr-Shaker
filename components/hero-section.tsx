@@ -44,7 +44,7 @@ export function HeroSection() {
 
           <h1 className="text-6xl md:text-8xl font-bold mb-6">Hello There</h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            I am <span className="gradient-text font-semibold">Amr Shaker</span> - <TypingAnimation />
+            This is <span className="gradient-text font-semibold">Amr</span> - <TypingAnimation />
           </p>
 
           <div className="flex items-center justify-center space-x-6 mb-12">

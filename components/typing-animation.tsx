@@ -5,6 +5,9 @@ import { useEffect, useState } from "react"
 const roles = [
   "Web Developer",
   "CS & AI Student",
+  "E-commerce Owner",
+  "Volunteer",
+  "Advisor",
 ]
 
 export function TypingAnimation() {
