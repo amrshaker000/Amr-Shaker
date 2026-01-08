@@ -28,23 +28,39 @@ export function AboutSection() {
     <section 
       id="about" 
       ref={sectionRef} 
-      className="relative py-20 overflow-hidden min-h-screen flex items-center"
-      style={{
-        backgroundImage: "url('/amr-casual.jpg')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed'
-      }}
+      className="py-20 relative flex-1 min-h-screen"
     >
+      {/* Desktop Background */}
+      <div className="hidden md:block absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/amr-casual.jpg')" }}></div>
+      {/* Mobile Background */}
+      <div className="md:hidden absolute inset-0 bg-cover bg-center bg-no-repeat" style={{ backgroundImage: "url('/amr-casual1.jpg')" }}></div>
       {/* Overlay */}
-      <div className="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
+      <div className="absolute inset-0 bg-black/60"></div>
       
       <div className="relative z-10 w-full">
         <div className={`container mx-auto px-6 transition-all duration-800 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 text-white">About Me</h2>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Left Column */}
+            
+            {/* Right Column */}
+            <div className="space-y-6">
+              <Card className="backdrop-blur-lg bg-white/10 border-white/20 shadow-2xl shadow-blue-500/20 p-6 transition-all duration-300 hover:shadow-blue-500/30">
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-bold text-white/90">My Journey</h3>
+                  <p className="text-white/80">
+                    Where I learned the value of building things with my own hands.
+                    Over time, I transitioned into the world of technology through self-learning, real projects, and freelancing.
+                    I worked as a web developer, a data entry specialist, and later founded my own brand, Ronaq, combining technology, 
+                    design, and entrepreneurship into real-world solutions.
+                    Today, I continue to grow as an aspiring Software Engineer, driven by a clear mission: 
+                    to use technology as a tool for empowerment, learning, and creating meaningful impact - for myself and for others.
+                  </p>
+                
+                </div>
+              </Card>
+
+              {/* Left Column */}
             <div className="space-y-6">
               <Card className="backdrop-blur-lg bg-white/10 border-white/20 shadow-2xl shadow-blue-500/20 p-6 transition-all duration-300 hover:shadow-blue-500/30">
                 <div className="space-y-4">
@@ -70,44 +86,30 @@ export function AboutSection() {
               </Card>
             </div>
             
-            {/* Right Column */}
-            <div className="space-y-6">
-              <Card className="backdrop-blur-lg bg-white/10 border-white/20 shadow-2xl shadow-blue-500/20 p-6 transition-all duration-300 hover:shadow-blue-500/30">
-                <div className="space-y-4">
-                  <h3 className="text-2xl font-bold text-white/90">My Journey</h3>
-                  <p className="text-white/80">
-                    My journey in tech started when I was 12 years old, tinkering with HTML and CSS to
-                    customize my MySpace profile. Since then, I've worked with numerous technologies and
-                    frameworks, always staying curious and eager to learn.
-                  </p>
-                  <p className="text-white/80">
-                    When I'm not coding, you can find me exploring new technologies, contributing to open
-                    source projects, or sharing my knowledge with the developer community through blog
-                    posts and tutorials.
-                  </p>
-                </div>
-              </Card>
-              
               <Card className="backdrop-blur-lg bg-white/10 border-white/20 shadow-2xl shadow-blue-500/20 p-6 transition-all duration-300 hover:shadow-blue-500/30">
                 <div className="space-y-4">
                   <h3 className="text-2xl font-bold text-white/90">My Values</h3>
                   <div className="grid gap-4 sm:grid-cols-2">
                     {[
                       {
-                        title: 'Clean Code',
-                        description: 'I write maintainable and scalable code that stands the test of time.'
+                        title: 'Growth Before Everything',
+                        description: 'I believe in constantly improving myself - learning, failing, fixing, and trying again. Every day is a new chance to become better than yesterday.'
                       },
                       {
-                        title: 'User-First',
-                        description: 'Every decision is made with the end user in mind.'
+                        title: 'Purposeful Work',
+                        description: 'I don’t work just to finish tasks. I work to create value, build meaningful projects, and leave a positive impact on the people I serve.'
                       },
                       {
-                        title: 'Continuous Learning',
-                        description: 'I stay updated with the latest technologies and best practices.'
+                        title: 'People First',
+                        description: 'Behind every project are real people. I listen carefully, communicate honestly, and make decisions that respect both the user and the team.'
                       },
                       {
-                        title: 'Collaboration',
-                        description: 'Great things in software are never done by one person.'
+                        title: 'Responsibility & Integrity',
+                        description: 'I take full ownership of my work, my commitments, and my mistakes. I believe trust is built through consistency, honesty, and accountability.'
+                      },
+                      {
+                        title: 'Collaboration & Community',
+                        description: 'I grow faster when I grow with others. I value teamwork, shared knowledge, and supporting people on their journeys - just as I was once supported.'
                       }
                     ].map((value) => (
                       <div 
