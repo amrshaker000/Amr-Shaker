@@ -41,11 +41,11 @@ export function AboutSection() {
                 Beyond technical work, I value leadership, collaboration, and community empowerment, and I aspire to become a socially conscious game developer creating culturally rooted digital experiences for global audiences.
               </p>
               <div className="flex flex-wrap gap-3 justify-center md:justify-start">
-                {["Dreamer", "Builder", "Founder", "Leader", "Creator", "Learner"].map((tech) => (
+                {["Dreamer", "Freelancer", "Founder", "Leader", "Creator", "Learner"].map((tech) => (
                   <span
                     key={tech}
                     className={`px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-medium hover:bg-primary/20 transition-colors ${
-                      ["Builder", "Creator"].includes(tech) ? "hidden md:inline-flex" : ""
+                      ["Creator","Dreamer"].includes(tech) ? "hidden md:inline-flex" : ""
                     }`}
                   >
                     {tech}
@@ -55,8 +55,14 @@ export function AboutSection() {
             </div>
 
             <Card className="relative overflow-hidden border-border/50 transition-all duration-300 w-full min-h-[320px] md:min-h-[420px]">
-              <div
-                className="absolute inset-0 bg-cover bg-center"
+              {/* Mobile background image */}
+              <div 
+                className="md:hidden absolute inset-0 bg-cover bg-center"
+                style={{ backgroundImage: "url('/amr-casual1.jpg')" }}
+              />
+              {/* Desktop background image */}
+              <div 
+                className="hidden md:block absolute inset-0 bg-cover bg-center"
                 style={{ backgroundImage: "url('/amr-casual.jpg')" }}
               />
               <div className="absolute inset-0 bg-background/75 dark:bg-background/85" />
