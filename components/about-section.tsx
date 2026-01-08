@@ -104,10 +104,6 @@ export function AboutSection() {
                         description: 'Behind every project are real people. I listen carefully, communicate honestly, and make decisions that respect both the user and the team.'
                       },
                       {
-                        title: 'Responsibility & Integrity',
-                        description: 'I take full ownership of my work, my commitments, and my mistakes. I believe trust is built through consistency, honesty, and accountability.'
-                      },
-                      {
                         title: 'Collaboration & Community',
                         description: 'I grow faster when I grow with others. I value teamwork, shared knowledge, and supporting people on their journeys - just as I was once supported.'
                       }
