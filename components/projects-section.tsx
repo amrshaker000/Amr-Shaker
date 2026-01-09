@@ -18,11 +18,11 @@ export function ProjectsSection() {
             {projects.map((project, index) => (
               <Card
                 key={project.title}
-                className={`backdrop-blur-lg bg-white/10 border-white/20 shadow-2xl shadow-blue-500/20 p-6 transition-all duration-300 hover:shadow-blue-500/30 group overflow-hidden animate-glow-pulse-card ${isVisible ? "animate-slide-up" : "opacity-0"
+                className={`shadow-2xl shadow-blue-500/20 p-6 transition-all duration-300 hover:shadow-blue-500/30 group overflow-hidden animate-glow-pulse-card ${isVisible ? "animate-slide-up" : "opacity-0"
                   }`}
                 style={{ animationDelay: `${index * 150}ms` }}
               >
-                <div className="relative overflow-hidden">
+                <div className="relative overflow-hidden rounded-xl">
                   <img
                     src={project.image || "/placeholder.svg"}
                     alt={project.title}

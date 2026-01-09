@@ -23,7 +23,7 @@ export function CertificationCard({ title, description, image, href, index }: Ce
             transition={{ duration: 0.5, delay: index * 0.1 }}
             className="h-full"
         >
-            <Card className="h-full flex flex-col overflow-hidden group hover:shadow-lg transition-all duration-300 border-primary/20 bg-card/50 backdrop-blur-sm animate-glow-pulse-card">
+            <Card className="h-full flex flex-col overflow-hidden group hover:shadow-lg transition-all duration-300 border-primary/20 animate-glow-pulse-card">
                 <div className="relative h-48 w-full overflow-hidden flex items-center justify-center bg-muted/30">
                     {/* Gradient background */}
                     <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/5 z-0" />

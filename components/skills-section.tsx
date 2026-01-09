@@ -28,7 +28,7 @@ export function SkillsSection() {
               {skills.map((skill, index) => (
                 <Card
                   key={skill.title}
-                  className={`h-full backdrop-blur-lg bg-white/10 border-white/20 shadow-2xl shadow-blue-500/20 p-6 transition-all duration-300 hover:shadow-blue-500/30 hover:translate-y-[-4px] animate-glow-pulse-card ${isVisible ? "animate-slide-up" : "opacity-0"
+                  className={`h-full bg-transparent border-white/20 shadow-2xl shadow-blue-500/20 p-6 transition-all duration-300 hover:shadow-blue-500/30 hover:translate-y-[-4px] animate-glow-pulse-card ${isVisible ? "animate-slide-up" : "opacity-0"
                     }`}
                   style={{ animationDelay: `${index * 100}ms` }}
                 >

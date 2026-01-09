@@ -35,7 +35,7 @@ export function AboutSection() {
 
         <div className="w-full max-w-6xl mx-auto">
           {/* Read Carefully Card */}
-          <Card className="w-full backdrop-blur-lg bg-white/10 border-white/20 shadow-2xl shadow-blue-500/20 p-6 md:p-8 lg:p-10 transition-all duration-300 hover:shadow-blue-500/30 animate-glow-pulse-card">
+          <Card className="w-full border-white/20 shadow-2xl shadow-blue-500/20 p-6 md:p-8 lg:p-10 transition-all duration-300 hover:shadow-blue-500/30 animate-glow-pulse-card">
             <div className="space-y-4">
               <h3 className="text-xl md:text-2xl lg:text-3xl font-bold text-white/90 relative inline-block">
                 Read <span className="text-blue-400 italic underline decoration-wavy decoration-blue-500/30">Care</span>fully

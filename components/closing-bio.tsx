@@ -94,7 +94,7 @@ export function ClosingBio() {
                 </div>
 
                 <div
-                    className="backdrop-blur-sm bg-background/30 rounded-2xl p-8 border border-primary/10 shadow-2xl relative overflow-hidden group hover:border-primary/20 transition-colors duration-500 bg-cover bg-center animate-glow-pulse-card"
+                    className="rounded-2xl p-8 border border-primary/10 shadow-2xl relative overflow-hidden group hover:border-primary/20 transition-colors duration-500 bg-cover bg-center animate-glow-pulse-card"
                     style={{ backgroundImage: "url('/amooor.jpg')" }}
                 >
                     {/* Dark Overlay for minimal visibility of image */}

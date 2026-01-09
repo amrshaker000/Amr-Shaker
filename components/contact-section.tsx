@@ -235,7 +235,7 @@ export function ContactSection() {
                 </div>
               </div>
 
-              <Card className="backdrop-blur-lg bg-white/10 border-white/20 shadow-2xl shadow-blue-500/20 p-6 transition-all duration-300 hover:shadow-blue-500/30 animate-glow-pulse-card">
+              <Card className="bg-transparent border-white/20 shadow-2xl shadow-blue-500/20 p-6 transition-all duration-300 hover:shadow-blue-500/30 animate-glow-pulse-card">
                 <CardHeader>
                   <CardTitle>Send a Message</CardTitle>
                 </CardHeader>

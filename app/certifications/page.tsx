@@ -11,7 +11,7 @@ export default function CertificationsPage() {
             <Navigation />
             <div className="min-h-screen relative py-20 px-6 bg-cover bg-center bg-fixed bg-no-repeat" style={{ backgroundImage: 'url("/certifications-bg.png")' }}>
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-background/80 md:bg-background/60 z-0 backdrop-blur-[2px]" />
+                <div className="absolute inset-0 bg-background/80 md:bg-background/60 z-0" />
 
                 <div className="container mx-auto relative z-10">
                     <motion.div
