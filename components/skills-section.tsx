@@ -1,66 +1,14 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Briefcase, Code, Compass, Globe, ArrowRight } from "lucide-react"
-import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
-
-interface SkillItem {
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
-  title: string;
-  description: string;
-  skills: string[];
-}
-
-const skills: SkillItem[] = [
-  {
-    icon: Code,
-    title: "Programming & Web Development",
-    description: "Help people tell their story, build their presence, and reach their audience through simple, effective, and beautiful websites.",
-    skills: ["C++", "Python", "OOP", "TypeScript", "React.js", "PHP", "HTML", "CSS", "JavaScript", "Next.js", "Tailwind CSS", "Redux", "Zustand", "Context API", "REST APIs", "Git & GitHub", "VS Code", "Responsive Design", "UI/UX", "Figma", "Framer Motion", "Accessibility", "Performance Optimization", "Testing"],
-  },
-  {
-    icon: Compass,
-    title: "Leadership & Soft Skills",
-    description: "Help teams work better, communicate clearly, overcome challenges, and grow together through strong leadership, empathy, and effective collaboration.",
-    skills: ["Leadership", "Team Management", "Communication", "Problem Solving", "Critical Thinking", "Adaptability", "Time Management", "Conflict Resolution", "Mentorship", "Motivation", "Responsibility", "Emotional Intelligence", "Continuous Learning", "Public Speaking", "Work Ethics",],
-  },
-  {
-    icon: Briefcase,
-    title: "Business & Entrepreneurship",
-    description: "Help turn ideas into sustainable projects, build brands, understand markets, and create real value through smart planning, execution, and continuous improvement.",
-    skills: ["Brand Building", "Digital Marketing", "Customer Relations", "Market Research", "Budget Planning", "Product Strategy", "Sales & Growth", "Business Operations", "Entrepreneurial Thinking", "Project Planning", "Decision Making", "Client Management", "Negotiation", "Process Optimization",],
-  },
-  {
-    icon: Globe,
-    title: "General & Additional Skills",
-    description: "Help ideas spread, projects improve, and people connect through creativity, organization, and modern digital tools.",
-    skills: ["Content Creation", "Social Media Management", "Canva & Design Tools", "Basic SEO", "Analytics & Insights", "Online Research", "Data Organization", "File Management", "Presentation Skills", "Remote Collaboration", "Productivity Systems", "Fast Typing (54+ WPM)",],
-  },
-]
+import { ArrowRight } from "lucide-react"
+import { useInView } from "@/hooks/use-in-view"
+import { skills } from "@/lib/data"
 
 export function SkillsSection() {
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.2 },
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
+  const [sectionRef, isVisible] = useInView<HTMLElement>()
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -93,7 +41,7 @@ export function SkillsSection() {
                     >
                       <CardHeader className="text-center">
                         <div className="mx-auto mb-4 p-3 bg-primary/10 rounded-full w-fit group-hover:bg-primary/20 transition-colors">
-                          <skill.icon className="h-8 w-8 text-primary" />
+                          {skill.icon}
                         </div>
                         <CardTitle className="text-xl">{skill.title}</CardTitle>
                       </CardHeader>

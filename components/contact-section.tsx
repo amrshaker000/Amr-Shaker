@@ -2,35 +2,34 @@
 
 import React, { useEffect, useRef, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Mail, MapPin, Phone, Send, Rocket, Copy, Check, Github, Linkedin, Facebook, Instagram } from "lucide-react"
-import { useTheme } from "next-themes"
 import { cn } from "@/lib/utils"
-
-// Dynamically import Confetti to avoid SSR issues
-
+import { contactFormSchema, type ContactFormValues } from "@/lib/validations"
+import { submitContactForm } from "@/actions/contact"
 
 export function ContactSection() {
   const [isVisible, setIsVisible] = useState(false)
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  })
-  const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isCopied, setIsCopied] = useState(false)
 
   const sectionRef = useRef<HTMLElement>(null)
   const emailRef = useRef<HTMLDivElement>(null)
-  const { setTheme } = useTheme()
 
-
-
+  const {
+    register,
+    handleSubmit: handleFormSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<ContactFormValues>({
+    resolver: zodResolver(contactFormSchema),
+  })
 
   // Copy email to clipboard
   const copyEmail = async () => {
@@ -73,37 +72,24 @@ export function ContactSection() {
     return () => observer.disconnect()
   }, [])
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (isSubmitting) return
-
-    setIsSubmitting(true)
-
+  const onSubmit = async (data: ContactFormValues) => {
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500))
-      console.log("Form submitted:", formData)
+      const result = await submitContactForm(data)
 
-      // Show success state
-      setIsSubmitted(true)
+      if (result.success) {
+        setIsSubmitted(true)
 
-      // Reset form after animation
-      setTimeout(() => {
-        setFormData({ name: '', email: '', message: '' })
-        setIsSubmitted(false)
-        setIsSubmitting(false)
-      }, 2000)
+        // Reset form after animation
+        setTimeout(() => {
+          reset()
+          setIsSubmitted(false)
+        }, 2000)
+      } else {
+        console.error('Error submitting form:', result.message)
+      }
     } catch (error) {
       console.error('Error submitting form:', error)
-      setIsSubmitting(false)
     }
-  }
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData((prev) => ({
-      ...prev,
-      [e.target.name]: e.target.value,
-    }))
   }
 
   return (
@@ -254,40 +240,40 @@ export function ContactSection() {
                   <CardTitle>Send a Message</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form onSubmit={handleFormSubmit(onSubmit)} className="space-y-6">
                     <div>
                       <Input
-                        name="name"
+                        {...register("name")}
                         placeholder="Your Name"
-                        value={formData.name}
-                        onChange={handleChange}
                         className="bg-background/50 border-border/50 focus:border-primary transition-colors"
-                        required
                       />
+                      {errors.name && (
+                        <p className="text-destructive text-sm mt-1">{errors.name.message}</p>
+                      )}
                     </div>
 
                     <div>
                       <Input
-                        name="email"
+                        {...register("email")}
                         type="email"
                         placeholder="Your Email"
-                        value={formData.email}
-                        onChange={handleChange}
                         className="bg-background/50 border-border/50 focus:border-primary transition-colors"
-                        required
                       />
+                      {errors.email && (
+                        <p className="text-destructive text-sm mt-1">{errors.email.message}</p>
+                      )}
                     </div>
 
                     <div>
                       <Textarea
-                        name="message"
+                        {...register("message")}
                         placeholder="Your Message"
-                        value={formData.message}
-                        onChange={handleChange}
                         rows={5}
                         className="bg-background/50 border-border/50 focus:border-primary transition-colors resize-none"
-                        required
                       />
+                      {errors.message && (
+                        <p className="text-destructive text-sm mt-1">{errors.message.message}</p>
+                      )}
                     </div>
 
                     <motion.div

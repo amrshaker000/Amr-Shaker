@@ -35,7 +35,7 @@ export function AboutSection() {
 
         <div className="max-w-6xl mx-auto">
           {/* Read Carefully Card */}
-          <Card className="backdrop-blur-lg bg-white/10 border-white/20 shadow-2xl shadow-blue-500/20 p-4 md:p-8 transition-all duration-300 hover:shadow-blue-500/30 h-full animate-glow-pulse-card">
+          <Card className="backdrop-blur-lg bg-white/10 border-white/20 shadow-2xl shadow-blue-500/20 p-6 md:p-8 transition-all duration-300 hover:shadow-blue-500/30 h-full animate-glow-pulse-card">
             <div className="space-y-4">
               <h3 className="text-2xl md:text-3xl font-bold text-white/90 relative inline-block">
                 Read <span className="text-blue-400 italic underline decoration-wavy decoration-blue-500/30">Care</span>fully
@@ -44,7 +44,7 @@ export function AboutSection() {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
                 </span>
               </h3>
-              <p className="text-white/80">
+              <p className="text-white/80 text-sm md:text-base leading-relaxed">
                 It all started with a simple thing: a computer.
                 When I was a kid, I didn’t just use it, I explored it. I spent hours scrolling, discovering, breaking things, fixing them, and getting curious about everything related to technology, software, and this science. Somewhere along the way, I realized this wasn’t just a hobby… this was my world.
                 <br />
