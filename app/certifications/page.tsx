@@ -149,8 +149,11 @@ const certifications = [
 
 export default function CertificationsPage() {
     return (
-        <div className="min-h-screen bg-background py-20 px-6">
-            <div className="container mx-auto">
+        <div className="min-h-screen relative py-20 px-6 bg-cover bg-center bg-fixed bg-no-repeat" style={{ backgroundImage: 'url("/certifications-bg.png")' }}>
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-background/80 md:bg-background/60 z-0 backdrop-blur-[2px]" />
+
+            <div className="container mx-auto relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
