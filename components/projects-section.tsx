@@ -138,7 +138,7 @@ export function ProjectsSection() {
             {projects.map((project, index) => (
               <Card
                 key={project.title}
-                className={`bg-card/50 backdrop-blur-sm border-border/50 hover:bg-card/70 hover:scale-105 transition-all duration-300 group overflow-hidden ${
+                className={`backdrop-blur-lg bg-white/10 border-white/20 shadow-2xl shadow-blue-500/20 p-6 transition-all duration-300 hover:shadow-blue-500/30 group overflow-hidden ${
                   isVisible ? "animate-slide-up" : "opacity-0"
                 }`}
                 style={{ animationDelay: `${index * 150}ms` }}
