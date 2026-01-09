@@ -5,19 +5,26 @@
 
 :root {
   /* Updated color tokens for modern dark theme portfolio */
-  --background: oklch(0.145 0 0); /* Dark background */
-  --foreground: oklch(0.985 0 0); /* Light text */
-  --card: oklch(0.205 0 0); /* Card background */
-  --card-foreground: oklch(0.985 0 0); /* Card text */
+  --background: oklch(0.145 0 0);
+  /* Dark background */
+  --foreground: oklch(0.985 0 0);
+  /* Light text */
+  --card: oklch(0.205 0 0);
+  /* Card background */
+  --card-foreground: oklch(0.985 0 0);
+  /* Card text */
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.646 0.222 264.376); /* Vibrant blue accent */
+  --primary: oklch(0.646 0.222 264.376);
+  /* Vibrant blue accent */
   --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.269 0 0); /* Secondary gray */
+  --secondary: oklch(0.269 0 0);
+  /* Secondary gray */
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.646 0.222 264.376); /* Matching accent */
+  --accent: oklch(0.646 0.222 264.376);
+  /* Matching accent */
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
@@ -118,6 +125,7 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -144,6 +152,7 @@
       opacity: 0;
       transform: translateY(20px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -155,6 +164,7 @@
       opacity: 0;
       transform: translateY(40px);
     }
+
     to {
       opacity: 1;
       transform: translateY(0);
@@ -162,10 +172,12 @@
   }
 
   @keyframes float {
+
     0%,
     100% {
       transform: translateY(0px);
     }
+
     50% {
       transform: translateY(-20px);
     }
@@ -176,5 +188,39 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+
+  .animate-glow-pulse-text {
+    animation: glowPulseText 3s ease-in-out infinite;
+  }
+
+  .animate-glow-pulse-card {
+    animation: glowPulseCard 4s ease-in-out infinite;
+  }
+
+  @keyframes glowPulseText {
+
+    0%,
+    100% {
+      text-shadow: 0 0 10px oklch(0.646 0.222 264.376 / 0.5), 0 0 20px oklch(0.646 0.222 264.376 / 0.3);
+      filter: drop-shadow(0 0 5px oklch(0.646 0.222 264.376 / 0.5));
+    }
+
+    50% {
+      text-shadow: 0 0 20px oklch(0.646 0.222 264.376 / 0.8), 0 0 40px oklch(0.646 0.222 264.376 / 0.5);
+      filter: drop-shadow(0 0 15px oklch(0.646 0.222 264.376 / 0.8));
+    }
+  }
+
+  @keyframes glowPulseCard {
+
+    0%,
+    100% {
+      box-shadow: 0 0 5px oklch(0.646 0.222 264.376 / 0.2);
+    }
+
+    50% {
+      box-shadow: 0 0 20px oklch(0.646 0.222 264.376 / 0.6), 0 0 10px oklch(0.646 0.222 264.376 / 0.4);
+    }
   }
 }

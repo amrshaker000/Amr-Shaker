@@ -132,15 +132,14 @@ export function ProjectsSection() {
     <section id="projects" ref={sectionRef} className="py-20 bg-card/20">
       <div className="container mx-auto px-6">
         <div className={`transition-all duration-800 ${isVisible ? "animate-slide-up" : "opacity-0 translate-y-10"}`}>
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text">Featured Projects</h2>
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text animate-glow-pulse-text">Featured Projects</h2>
 
           <div className="grid md:grid-cols-2 gap-8">
             {projects.map((project, index) => (
               <Card
                 key={project.title}
-                className={`backdrop-blur-lg bg-white/10 border-white/20 shadow-2xl shadow-blue-500/20 p-6 transition-all duration-300 hover:shadow-blue-500/30 group overflow-hidden ${
-                  isVisible ? "animate-slide-up" : "opacity-0"
-                }`}
+                className={`backdrop-blur-lg bg-white/10 border-white/20 shadow-2xl shadow-blue-500/20 p-6 transition-all duration-300 hover:shadow-blue-500/30 group overflow-hidden animate-glow-pulse-card ${isVisible ? "animate-slide-up" : "opacity-0"
+                  }`}
                 style={{ animationDelay: `${index * 150}ms` }}
               >
                 <div className="relative overflow-hidden">
@@ -179,9 +178,9 @@ export function ProjectsSection() {
                         size="sm"
                         className={`flex items-center gap-2 ${link.variant === 'outline' ? 'bg-transparent' : ''}`}
                       >
-                        <a 
-                          href={link.url} 
-                          target="_blank" 
+                        <a
+                          href={link.url}
+                          target="_blank"
                           rel="noopener noreferrer"
                           className="whitespace-nowrap"
                         >

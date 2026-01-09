@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef, useState } from "react"
-import { motion, useInView, AnimatePresence } from "framer-motion"
+import { motion, useInView, AnimatePresence, Variants } from "framer-motion"
 import { Sparkles, Quote } from "lucide-react"
 import dynamic from 'next/dynamic'
 
@@ -43,9 +43,16 @@ export function ClosingBio() {
         lastClickTime.current = now
     }
 
-    const text = "I know you might feel a bit lost and wondering who I am and what exactly I do, so let me put it. simply: I’m Amr, an Egyptian student driven by technology, learning, and building my future step by step. I work in software and web development, run my own brand, Ronaq, and currently study IT with a specialization in Artificial Intelligence at Helwan Technological University. I’m deeply interested in business, leadership, and personal growth, and I’ve taken part in many volunteering activities and major events that shaped how I think and how I contribute to others. In short, I’m someone who loves to learn, build, and leave a real, positive impact wherever I go."
+    // Creative text state
+    const textVariants: Variants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.8, ease: "easeOut" }
+        }
+    }
 
-    const words = text.split(" ")
 
     return (
         <div className="w-full max-w-4xl mx-auto px-6 py-20 relative font-sans">
@@ -87,7 +94,7 @@ export function ClosingBio() {
                 </div>
 
                 <div
-                    className="backdrop-blur-sm bg-background/30 rounded-2xl p-8 border border-primary/10 shadow-2xl relative overflow-hidden group hover:border-primary/20 transition-colors duration-500 bg-cover bg-center"
+                    className="backdrop-blur-sm bg-background/30 rounded-2xl p-8 border border-primary/10 shadow-2xl relative overflow-hidden group hover:border-primary/20 transition-colors duration-500 bg-cover bg-center animate-glow-pulse-card"
                     style={{ backgroundImage: "url('/amooor.jpg')" }}
                 >
                     {/* Dark Overlay for minimal visibility of image */}
@@ -99,31 +106,52 @@ export function ClosingBio() {
                     {/* Top decorative line */}
                     <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-800"></div>
 
-                    <div className="relative z-10 text-center md:text-left">
-                        <div className="flex flex-wrap justify-center md:justify-start gap-x-1.5 gap-y-1 text-lg md:text-xl leading-relaxed text-muted-foreground">
-                            {words.map((word, i) => {
-                                const isSimply = word.includes("simply:")
-                                const isHighlight = ["Amr", "Ronaq", "Helwan", "impact"].some(term => word.includes(term))
+                    <div className="relative z-10 w-full flex items-center justify-center py-12 md:py-20">
+                        <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            variants={textVariants}
+                            className="relative flex flex-col items-center"
+                        >
+                            <h2 className="text-6xl md:text-9xl font-serif italic text-transparent bg-clip-text bg-gradient-to-br from-[rgb(255,230,176)] via-white to-[rgb(255,230,176)] drop-shadow-2xl cursor-default select-none">
+                                Simply
+                            </h2>
 
-                                return (
-                                    <span key={i} className={isSimply ? "w-full block mb-2" : ""}>
-                                        <motion.span
-                                            initial={{ opacity: 0, y: 10, filter: "blur(5px)" }}
-                                            animate={isInView ? { opacity: 1, y: 0, filter: "blur(0px)" } : {}}
-                                            transition={{
-                                                duration: 0.5,
-                                                delay: i * 0.02, // Staggered delay for typing effect
-                                                ease: "easeOut"
-                                            }}
-                                            className={`inline-block hover:text-primary transition-colors duration-300 ${isSimply ? "" : "mr-1.5"} ${isHighlight ? "text-foreground font-semibold" : ""}`}
-                                        >
-                                            {word}
-                                        </motion.span>
-                                        {isSimply && <span className="w-full block h-2"></span>}
-                                    </span>
-                                )
-                            })}
-                        </div>
+                            {/* Decorative Elements around Simply */}
+                            <motion.div
+                                animate={{
+                                    rotate: 360,
+                                    scale: [1, 1.1, 1]
+                                }}
+                                transition={{
+                                    rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+                                    scale: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+                                }}
+                                className="absolute -top-4 -right-8 text-[rgb(255,230,176)]/40"
+                            >
+                                <Sparkles size={40} />
+                            </motion.div>
+
+                            <motion.div
+                                animate={{
+                                    scale: [1, 1.2, 1],
+                                    opacity: [0.3, 0.6, 0.3]
+                                }}
+                                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                                className="absolute -bottom-2 -left-4 w-full h-4 bg-[rgb(255,230,176)] blur-2xl rounded-full -z-10"
+                            />
+
+                            <motion.p
+                                initial={{ opacity: 0, y: 10 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.4, duration: 0.8 }}
+                                className="mt-8 text-lg md:text-xl text-white/90 max-w-2xl text-center leading-relaxed font-light"
+                            >
+                                An <span className="font-semibold text-[#ffe6b0]">Egyptian student</span> driven by <span className="font-semibold text-[#ffe6b0]">technology</span> step by step. Work in <span className="font-semibold text-[#ffe6b0]">software</span>, run the own brand <span className="font-semibold text-[#ffe6b0]">Ronaq</span>, and study <span className="font-semibold text-[#ffe6b0]">Artificial Intelligence</span> at <span className="font-semibold text-[#ffe6b0]">Helwan</span>Technological University. Interested in <span className="font-semibold text-[#ffe6b0]">Enterpreneurship</span>, <span className="font-semibold text-[#ffe6b0]">leadership</span>, and personal<span className="font-semibold text-[#ffe6b0]"> growth</span>, and I enjoy <span className="font-semibold text-[#ffe6b0]">learning</span>, creating, and making a <span className="font-semibold text-[#ffe6b0]">positive impact</span> on the people in around.
+                            </motion.p>
+                        </motion.div>
                     </div>
 
                     <div className="mt-8 flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
@@ -146,7 +174,18 @@ export function ClosingBio() {
                                 >
                                     <div className="relative">
                                         {/* Glow Effect */}
-                                        <div className="absolute -inset-1 bg-[rgb(255,230,176)] rounded-full opacity-60 blur-md group-hover/link:opacity-80 transition-all duration-500"></div>
+                                        <motion.div
+                                            className="absolute -inset-2 bg-[rgb(255,230,176)] rounded-full blur-md"
+                                            animate={{
+                                                scale: [1, 1.1, 1, 1.25, 1],
+                                                opacity: [0.6, 0.8, 0.6, 1, 0.6]
+                                            }}
+                                            transition={{
+                                                duration: 1,
+                                                repeat: Infinity,
+                                                ease: "easeInOut"
+                                            }}
+                                        />
 
                                         {/* Profile Image */}
                                         <div className="relative w-16 h-16 rounded-full bg-[rgb(255,230,176)] p-0.5">

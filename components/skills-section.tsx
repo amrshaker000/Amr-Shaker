@@ -74,7 +74,7 @@ export function SkillsSection() {
 
         <div className="container mx-auto px-6 relative z-10">
           <div className={`transition-all duration-800 ${isVisible ? "animate-slide-up" : "opacity-0 translate-y-10"}`}>
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text">Skills & Expertise</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text animate-glow-pulse-text">Skills & Expertise</h2>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {skills.map((skill, index) => {
@@ -87,7 +87,7 @@ export function SkillsSection() {
                     className="block h-full group"
                   >
                     <Card
-                      className={`h-full backdrop-blur-lg bg-white/10 border-white/20 shadow-2xl shadow-blue-500/20 p-6 transition-all duration-300 hover:shadow-blue-500/30 hover:translate-y-[-4px] ${isVisible ? "animate-slide-up" : "opacity-0"
+                      className={`h-full backdrop-blur-lg bg-white/10 border-white/20 shadow-2xl shadow-blue-500/20 p-6 transition-all duration-300 hover:shadow-blue-500/30 hover:translate-y-[-4px] animate-glow-pulse-card ${isVisible ? "animate-slide-up" : "opacity-0"
                         }`}
                       style={{ animationDelay: `${index * 100}ms` }}
                     >

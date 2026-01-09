@@ -47,50 +47,13 @@ export function HeroSection() {
             This is <span className="gradient-text font-semibold">Amr</span> - <TypingAnimation />
           </p>
 
-          <div className="flex items-center justify-center space-x-6 mb-12">
-            <Button variant="outline" size="icon" className="hover:scale-110 transition-transform bg-transparent" asChild>
-              <a
-                href="https://github.com/amrshaker000"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-              >
-                <Github className="h-5 w-5" />
-              </a>
-            </Button>
-            <Button variant="outline" size="icon" className="hover:scale-110 transition-transform bg-transparent" asChild>
-              <a
-                href="https://www.linkedin.com/in/amrsh842/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-            </Button>
-            <Button variant="outline" size="icon" className="hover:scale-110 transition-transform bg-transparent" asChild>
-              <a href="mailto:amrshaker842@gmail.com" aria-label="Email">
-                <Mail className="h-5 w-5" />
-              </a>
-            </Button>
-          </div>
 
-          <Button
-            onClick={scrollToAbout}
-            className="group bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-full transition-all duration-300 hover:scale-105"
-          >
-            Discover More
-            <ArrowDown className="ml-2 h-4 w-4 group-hover:translate-y-1 transition-transform" />
-          </Button>
+
+
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-muted-foreground rounded-full mt-2 animate-pulse" />
-        </div>
-      </div>
+
     </section>
   )
 }

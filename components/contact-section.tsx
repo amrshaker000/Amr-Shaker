@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Mail, MapPin, Phone, Send, Rocket, Copy, Check } from "lucide-react"
+import { Mail, MapPin, Phone, Send, Rocket, Copy, Check, Github, Linkedin, Facebook, Instagram } from "lucide-react"
 import { useTheme } from "next-themes"
 import { cn } from "@/lib/utils"
 
@@ -122,7 +122,7 @@ export function ContactSection() {
 
         <div className="container mx-auto px-6 relative z-10 flex-1 flex flex-col">
           <div className={`transition-all duration-800 ${isVisible ? "animate-slide-up" : "opacity-0 translate-y-10"}`}>
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text">Let's Connect</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text animate-glow-pulse-text">Let's Connect</h2>
 
             <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
               <div className="space-y-8">
@@ -204,9 +204,52 @@ export function ContactSection() {
                     </div>
                   </div>
                 </div>
+
+                <div className="flex items-center gap-4 mt-8">
+                  <Button variant="outline" size="icon" className="hover:scale-110 transition-transform bg-primary/10 border-primary/20 hover:bg-primary/20" asChild>
+                    <a
+                      href="https://github.com/amrshaker000"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="GitHub"
+                    >
+                      <Github className="h-5 w-5 text-primary" />
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="icon" className="hover:scale-110 transition-transform bg-primary/10 border-primary/20 hover:bg-primary/20" asChild>
+                    <a
+                      href="https://www.linkedin.com/in/amrsh842/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="LinkedIn"
+                    >
+                      <Linkedin className="h-5 w-5 text-primary" />
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="icon" className="hover:scale-110 transition-transform bg-primary/10 border-primary/20 hover:bg-primary/20" asChild>
+                    <a
+                      href="https://www.facebook.com/amrshaker000"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Facebook"
+                    >
+                      <Facebook className="h-5 w-5 text-primary" />
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="icon" className="hover:scale-110 transition-transform bg-primary/10 border-primary/20 hover:bg-primary/20" asChild>
+                    <a
+                      href="https://www.instagram.com/ulv_____________"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Instagram"
+                    >
+                      <Instagram className="h-5 w-5 text-primary" />
+                    </a>
+                  </Button>
+                </div>
               </div>
 
-              <Card className="backdrop-blur-lg bg-white/10 border-white/20 shadow-2xl shadow-blue-500/20 p-6 transition-all duration-300 hover:shadow-blue-500/30">
+              <Card className="backdrop-blur-lg bg-white/10 border-white/20 shadow-2xl shadow-blue-500/20 p-6 transition-all duration-300 hover:shadow-blue-500/30 animate-glow-pulse-card">
                 <CardHeader>
                   <CardTitle>Send a Message</CardTitle>
                 </CardHeader>
