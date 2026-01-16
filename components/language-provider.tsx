@@ -29,7 +29,7 @@ const translations: Record<Language, Record<string, string>> = {
         "hero.volunteer": "Volunteer",
         "hero.advisor": "Strategic Advisor",
         // About Section
-        "about.title": "The Journey",
+        "about.title": "About Me",
         "about.subtitle": "A CHRONOLOGICAL FLOW OF CURIOSITY, CRAFT, AND CONSISTENCY.",
         "about.phase.curiosity": "Curiosity",
         "about.phase.commitment": "Commitment",
@@ -38,6 +38,8 @@ const translations: Record<Language, Record<string, string>> = {
         "about.phase.impact": "Impact",
         "about.phase.investment": "Investment",
         "about.phase.purpose": "Purpose",
+        "about.readMore": "Read More",
+        "about.continue": "Continue Exploration",
         // Projects
         "projects.title": "Featured Projects",
         // Skills
@@ -70,7 +72,7 @@ const translations: Record<Language, Record<string, string>> = {
         // Bio
         "bio.simply": "Simply",
         "bio.easterEgg": "Unlock the Future: Let's Build Together!",
-        "bio.description": "An Egyptian student driven by technology step by step. Work in software, run the own brand Ronaq, and study Computer Science. Interested in Entrepreneurship, leadership, and personal growth, and I enjoy learning, creating, and making a positive impact on the people around.",
+        "bio.description": "My journey is defined by a relentless pursuit of depth over surface-level success. I transitioned from freelance coding to mastering Computer Science fundamentals, while simultaneously bootstrapping my own business, Ronaq, to prove that discipline and limited resources can create real value. This drive for growth is matched by a continuous commitment to self-investment through elite programs like Aspire and McKinsey, and a dedication to community impact via extensive volunteering with TEDx and youth initiatives. I view myself not just as a developer or entrepreneur, but as a builder focused on continuous learning, taking responsibility, and clearing the path for those who follow.",
         "bio.ronaqName": "lovely Ronaq",
         "bio.runBy": "Run by Amr Shaker",
         "bio.thanks": "Thanks for visiting",
@@ -101,6 +103,8 @@ const translations: Record<Language, Record<string, string>> = {
         "about.phase.impact": "تأثير",
         "about.phase.investment": "استثمار",
         "about.phase.purpose": "هدف",
+        "about.readMore": "اقرأ عني",
+        "about.continue": "مواصلة الأستكشاف",
         // Projects
         "projects.title": "مشاريع مميزة",
         // Skills
@@ -133,7 +137,7 @@ const translations: Record<Language, Record<string, string>> = {
         // Bio
         "bio.simply": "ببساطة",
         "bio.easterEgg": "افتح المستقبل: دعنا نبني معاً!",
-        "bio.description": "طالب مصري مدفوع بالتكنولوجيا خطوة بخطوة. أعمل في مجال البرمجيات، وأدير علامتي التجارية الخاصة 'رونق'، وأدرس علوم الحاسوب. مهتم بريادة الأعمال والقيادة والنمو الشخصي، وأستمتع بالتعلم والابتكار وترك أثر إيجابي على من حولي.",
+        "bio.description": "تتميز رحلتي بالسعي الدؤوب نحو التعمق في المعرفة بدلاً من النجاح السطحي. انتقلت من العمل الحر في مجال البرمجة إلى إتقان أساسيات علوم الحاسوب، بالتزامن مع تأسيس شركتي الخاصة، رونق، لأثبت أن الانضباط والموارد المحدودة قادران على خلق قيمة حقيقية. هذا الدافع للنمو يقابله التزام مستمر بالاستثمار الذاتي من خلال برامج متميزة مثل أسباير وماكينزي، وتفانٍ في خدمة المجتمع عبر العمل التطوعي المكثف مع تيدكس ومبادرات الشباب. في نهاية المطاف، لا أرى نفسي مجرد مطور أو رائد أعمال، بل كقائد يركز على التعلم المستمر، وتحمل المسؤولية، وتمهيد الطريق لمن يأتي بعدي.",
         "bio.ronaqName": "حبيبتي رونق ",
         "bio.runBy": "بإدارة عمرو شاكر",
         "bio.thanks": "شكراً لزيارتكم",
