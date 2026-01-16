@@ -3,10 +3,13 @@
 import { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react"
+import { motion } from "framer-motion"
 import { TypingAnimation } from "./typing-animation"
+import { useLanguage } from "./language-provider"
 
 export function HeroSection() {
   const [mounted, setMounted] = useState(false)
+  const { t } = useLanguage()
 
   useEffect(() => {
     setMounted(true)
@@ -42,9 +45,9 @@ export function HeroSection() {
             </div>
           </div>
 
-          <h1 className="text-6xl md:text-8xl font-bold mb-6">Hello There</h1>
+          <h1 className="text-6xl md:text-8xl font-bold mb-6">{t("hero.hello")}</h1>
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            This is <span className="gradient-text font-semibold">Amr</span> - <TypingAnimation />
+            {t("hero.thisIs")} <span className="gradient-text font-semibold">{t("nav.amr") || "Amr"}</span> - <TypingAnimation />
           </p>
 
 
@@ -53,7 +56,38 @@ export function HeroSection() {
         </div>
       </div>
 
-
+      {/* Animated Scroll Indicator */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.5, duration: 1 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 cursor-pointer"
+        onClick={scrollToAbout}
+      >
+        <motion.div
+          animate={{
+            y: [0, 12, 0],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="w-8 h-12 rounded-full border-2 border-primary/30 flex justify-center p-2 hover:border-primary/60 transition-colors"
+        >
+          <motion.div
+            animate={{
+              y: [0, 10, 0],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="w-1.5 h-1.5 bg-primary rounded-full"
+          />
+        </motion.div>
+      </motion.div>
     </section>
   )
 }

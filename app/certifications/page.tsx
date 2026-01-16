@@ -3,9 +3,13 @@
 import { CertificationCard } from "@/components/certification-card"
 import { Navigation } from "@/components/navigation"
 import { motion } from "framer-motion"
-import { certifications } from "@/lib/data"
+import { getCertifications } from "@/lib/data"
+import { useLanguage } from "@/components/language-provider"
 
 export default function CertificationsPage() {
+    const { language, t } = useLanguage()
+    const certifications = getCertifications(language)
+
     return (
         <>
             <Navigation />
@@ -20,9 +24,9 @@ export default function CertificationsPage() {
                         transition={{ duration: 0.6 }}
                         className="text-center mb-16"
                     >
-                        <h1 className="text-4xl md:text-5xl font-bold mb-4 gradient-text animate-glow-pulse-text">Amr&apos;s Certifications</h1>
+                        <h1 className="text-4xl md:text-5xl font-bold mb-4 gradient-text animate-glow-pulse-text">{t("certifications.title")}</h1>
                         <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                            A collection of professional certificates, courses, and achievements.
+                            {t("certifications.subtitle")}
                         </p>
                     </motion.div>
 

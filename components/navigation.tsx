@@ -4,9 +4,12 @@ import { useState, useEffect } from "react"
 import { useRouter, usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { useLanguage } from "@/components/language-provider"
+import { Globe } from "lucide-react"
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const { language, setLanguage, t } = useLanguage()
   const router = useRouter()
   const pathname = usePathname()
   const isHomePage = pathname === "/"
@@ -21,16 +24,13 @@ export function Navigation() {
 
   const scrollToSection = (sectionId: string) => {
     if (isHomePage) {
-      // If on home page, scroll directly
       const element = document.getElementById(sectionId)
       element?.scrollIntoView({ behavior: "smooth" })
     } else {
-      // If on another page, navigate to home page with hash
       router.push(`/#${sectionId}`)
     }
   }
 
-  // Handle scrolling when landing on home page with hash
   useEffect(() => {
     if (isHomePage && window.location.hash) {
       const id = window.location.hash.substring(1)
@@ -49,24 +49,36 @@ export function Navigation() {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <Link href="/" className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent hover:opacity-80 transition-opacity">
-            Discover My Journey
+            {t("nav.journey")}
           </Link>
-          <div className="hidden md:flex items-center space-x-8">
-            {[
-              { id: "about", label: "About" },
-              { id: "skills", label: "Skills" },
-              { id: "projects", label: "Projects" },
-              { id: "contact", label: "Contact" },
-            ].map((item) => (
-              <Button
-                key={item.id}
-                variant="ghost"
-                onClick={() => scrollToSection(item.id)}
-                className="text-foreground hover:text-primary transition-colors capitalize"
-              >
-                {item.label}
-              </Button>
-            ))}
+          <div className="flex items-center space-x-4 md:space-x-8">
+            <div className="hidden md:flex items-center space-x-6">
+              {[
+                { id: "about", key: "nav.about" },
+                { id: "skills", key: "nav.skills" },
+                { id: "projects", key: "nav.projects" },
+                { id: "contact", key: "nav.contact" },
+              ].map((item) => (
+                <Button
+                  key={item.id}
+                  variant="ghost"
+                  onClick={() => scrollToSection(item.id)}
+                  className="text-foreground hover:text-primary transition-colors h-auto py-2 px-3"
+                >
+                  {t(item.key)}
+                </Button>
+              ))}
+            </div>
+
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setLanguage(language === "en" ? "ar" : "en")}
+              className="border-primary/20 hover:border-primary/50 flex items-center gap-2 px-3 h-9"
+            >
+              <Globe className="h-4 w-4" />
+              <span className="text-xs font-bold">{language === "en" ? "AR" : "EN"}</span>
+            </Button>
           </div>
         </div>
       </div>

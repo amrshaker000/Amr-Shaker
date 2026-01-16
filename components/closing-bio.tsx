@@ -4,12 +4,16 @@ import { useRef, useState } from "react"
 import { motion, useInView, AnimatePresence, Variants } from "framer-motion"
 import { Sparkles, Quote } from "lucide-react"
 import dynamic from 'next/dynamic'
+import { cn } from "@/lib/utils"
+import { useLanguage } from "./language-provider"
 
 const Confetti = dynamic(() => import('react-confetti'), {
     ssr: false
 })
 
 export function ClosingBio() {
+    const { language, t } = useLanguage()
+    const isAr = language === "ar"
     const ref = useRef(null)
     const isInView = useInView(ref, { once: true, margin: "-100px" })
 
@@ -84,12 +88,12 @@ export function ClosingBio() {
                             className="absolute top-4 left-1/2 -translate-x-1/2 bg-primary/90 text-primary-foreground px-6 py-3 rounded-full z-50 shadow-lg flex items-center gap-2 whitespace-nowrap"
                         >
                             <Sparkles className="w-5 h-5" />
-                            <span>Unlock the Future: Let's Build Together!</span>
+                            <span>{t("bio.easterEgg")}</span>
                         </motion.div>
                     )}
                 </AnimatePresence>
 
-                <div className="absolute -top-10 -left-10 text-primary/10">
+                <div className={cn("absolute -top-10 text-primary/10", isAr ? "-right-10 scale-x-[-1]" : "-left-10")}>
                     <Quote size={80} />
                 </div>
 
@@ -115,7 +119,7 @@ export function ClosingBio() {
                             className="relative flex flex-col items-center"
                         >
                             <h2 className="text-6xl md:text-9xl font-serif italic text-transparent bg-clip-text bg-gradient-to-br from-[rgb(255,230,176)] via-white to-[rgb(255,230,176)] drop-shadow-2xl cursor-default select-none">
-                                Simply
+                                {t("bio.simply")}
                             </h2>
 
                             {/* Decorative Elements around Simply */}
@@ -128,7 +132,7 @@ export function ClosingBio() {
                                     rotate: { duration: 20, repeat: Infinity, ease: "linear" },
                                     scale: { duration: 2, repeat: Infinity, ease: "easeInOut" }
                                 }}
-                                className="absolute -top-4 -right-8 text-[rgb(255,230,176)]/40"
+                                className={cn("absolute -top-4 text-[rgb(255,230,176)]/40", isAr ? "-left-8" : "-right-8")}
                             >
                                 <Sparkles size={40} />
                             </motion.div>
@@ -147,14 +151,20 @@ export function ClosingBio() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: 0.4, duration: 0.8 }}
-                                className="mt-8 text-lg md:text-xl text-white/90 max-w-2xl text-center leading-relaxed font-light"
+                                className={cn("mt-8 text-lg md:text-xl text-white/90 max-w-2xl leading-relaxed font-light text-center", isAr && "dir-rtl")}
                             >
-                                An <span className="font-semibold text-[#ffe6b0]">Egyptian student</span> driven by <span className="font-semibold text-[#ffe6b0]">technology</span> step by step. Work in <span className="font-semibold text-[#ffe6b0]">software</span>, run the own brand <span className="font-semibold text-[#ffe6b0]">Ronaq</span>, and study <span className="font-semibold text-[#ffe6b0]">Artificial Intelligence</span> at <span className="font-semibold text-[#ffe6b0]">Helwan</span>Technological University. Interested in <span className="font-semibold text-[#ffe6b0]">Enterpreneurship</span>, <span className="font-semibold text-[#ffe6b0]">leadership</span>, and personal<span className="font-semibold text-[#ffe6b0]"> growth</span>, and I enjoy <span className="font-semibold text-[#ffe6b0]">learning</span>, creating, and making a <span className="font-semibold text-[#ffe6b0]">positive impact</span> on the people in around.
+                                {language === "en" ? (
+                                    <>
+                                        An <span className="font-semibold text-[#ffe6b0]">Egyptian student</span> driven by <span className="font-semibold text-[#ffe6b0]">technology</span> step by step. Work in <span className="font-semibold text-[#ffe6b0]">software</span>, run the own brand <span className="font-semibold text-[#ffe6b0]">Ronaq</span>, and study <span className="font-semibold text-[#ffe6b0]">Computer Science.</span> Interested in <span className="font-semibold text-[#ffe6b0]">Entrepreneurship</span>, <span className="font-semibold text-[#ffe6b0]">leadership</span>, and personal<span className="font-semibold text-[#ffe6b0]"> growth</span>, and I enjoy <span className="font-semibold text-[#ffe6b0]">learning</span>, creating, and making a <span className="font-semibold text-[#ffe6b0]">positive impact</span> on the people around.
+                                    </>
+                                ) : (
+                                    t("bio.description")
+                                )}
                             </motion.p>
                         </motion.div>
                     </div>
 
-                    <div className="mt-8 flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
+                    <div className={cn("mt-8 flex flex-col md:flex-row items-center justify-between gap-8 relative z-10", isAr && "md:flex-row-reverse")}>
                         {/* Ronaq Profile Section */}
                         <motion.div
                             className="flex flex-col items-center space-y-4 relative group"
@@ -170,7 +180,7 @@ export function ClosingBio() {
                             >
                                 <motion.div
                                     onClick={handleProfileClick}
-                                    className="cursor-pointer relative flex items-center gap-4 bg-black/20 p-3 rounded-xl hover:bg-black/30 transition-colors"
+                                    className={cn("cursor-pointer relative flex items-center gap-4 bg-black/20 p-3 rounded-xl hover:bg-black/30 transition-colors", isAr && "flex-row-reverse")}
                                 >
                                     <div className="relative">
                                         {/* Glow Effect */}
@@ -197,9 +207,9 @@ export function ClosingBio() {
                                         </div>
                                     </div>
 
-                                    <div className="flex flex-col text-left">
-                                        <span className="text-[rgb(255,230,176)] font-medium text-lg tracking-wide">lovely Ronaq</span>
-                                        <span className="text-white/60 text-xs">Run by Amr Shaker</span>
+                                    <div className={cn("flex flex-col", isAr ? "text-right" : "text-left")}>
+                                        <span className="text-[rgb(255,230,176)] font-medium text-lg tracking-wide">{t("bio.ronaqName")}</span>
+                                        <span className="text-white/60 text-xs">{t("bio.runBy")}</span>
                                     </div>
                                 </motion.div>
                             </a>
@@ -209,10 +219,10 @@ export function ClosingBio() {
                             initial={{ scale: 0, opacity: 0 }}
                             animate={isInView ? { scale: 1, opacity: 1 } : {}}
                             transition={{ delay: 2, duration: 0.5, type: "spring" }}
-                            className="flex items-center gap-2 text-primary text-sm font-medium bg-primary/10 px-4 py-2 rounded-full backdrop-blur-md"
+                            className={cn("flex items-center gap-2 text-primary text-sm font-medium bg-primary/10 px-4 py-2 rounded-full backdrop-blur-md", isAr && "flex-row-reverse")}
                         >
                             <Sparkles size={16} />
-                            <span>Thanks for visiting</span>
+                            <span>{t("bio.thanks")}</span>
                         </motion.div>
                     </div>
                 </div>

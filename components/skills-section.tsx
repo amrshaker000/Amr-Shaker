@@ -5,10 +5,13 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { ArrowRight } from "lucide-react"
 import { useInView } from "@/hooks/use-in-view"
-import { skills } from "@/lib/data"
+import { useLanguage } from "@/components/language-provider"
+import { getSkills } from "@/lib/data"
 
 export function SkillsSection() {
+  const { language, t } = useLanguage()
   const [sectionRef, isVisible] = useInView<HTMLElement>()
+  const skills = getSkills(language)
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -22,7 +25,7 @@ export function SkillsSection() {
 
         <div className="container mx-auto px-6 relative z-10">
           <div className={`transition-all duration-800 ${isVisible ? "animate-slide-up" : "opacity-0 translate-y-10"}`}>
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text animate-glow-pulse-text">Skills & Expertise</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text animate-glow-pulse-text">{t("skills.title")}</h2>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {skills.map((skill, index) => (
@@ -50,7 +53,7 @@ export function SkillsSection() {
                         </span>
                       ))}
                       {skill.skills.length > 5 && (
-                        <span className="text-xs text-muted-foreground">+{skill.skills.length - 5} more</span>
+                        <span className="text-xs text-muted-foreground">+{skill.skills.length - 5} {language === "ar" ? "أكثر" : "more"}</span>
                       )}
                     </div>
                   </CardContent>
@@ -69,7 +72,7 @@ export function SkillsSection() {
                 href="/certifications"
                 className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary via-accent to-primary bg-size-200 bg-pos-0 hover:bg-pos-100 text-primary-foreground font-bold text-lg rounded-xl shadow-2xl shadow-primary/50 hover:shadow-primary/80 transition-all duration-500 hover:scale-105"
               >
-                <span className="relative z-10">View Certifications</span>
+                <span className="relative z-10">{t("skills.achievements")}</span>
                 <motion.span
                   animate={{
                     x: [0, 5, 0],

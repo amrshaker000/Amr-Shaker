@@ -35,6 +35,8 @@ export const metadata: Metadata = {
   },
 }
 
+import { LanguageProvider } from "@/components/language-provider"
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -42,7 +44,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable} dark`}>
-      <body className="font-sans antialiased">{children}</body>
+      <body className="font-sans antialiased">
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
+      </body>
     </html>
   )
 }

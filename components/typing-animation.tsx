@@ -1,16 +1,18 @@
 "use client"
 
 import { useEffect, useState } from "react"
-
-const roles = [
-  "Web Developer",
-  "CS & AI Student",
-  "E-commerce Owner",
-  "Volunteer",
-  "Advisor",
-]
+import { useLanguage } from "./language-provider"
 
 export function TypingAnimation() {
+  const { t } = useLanguage()
+
+  const roles = [
+    t("hero.developer"),
+    t("hero.student"),
+    t("hero.owner"),
+    t("hero.volunteer"),
+    t("hero.advisor"),
+  ]
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0)
   const [currentText, setCurrentText] = useState("")
   const [isDeleting, setIsDeleting] = useState(false)

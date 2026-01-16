@@ -14,7 +14,11 @@ import { cn } from "@/lib/utils"
 import { contactFormSchema, type ContactFormValues } from "@/lib/validations"
 import { submitContactForm } from "@/actions/contact"
 
+import { useLanguage } from "@/components/language-provider"
+
 export function ContactSection() {
+  const { language, t } = useLanguage()
+  const isAr = language === "ar"
   const [isVisible, setIsVisible] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isCopied, setIsCopied] = useState(false)
@@ -102,33 +106,28 @@ export function ContactSection() {
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/60"></div>
 
-
-
-
-
         <div className="container mx-auto px-6 relative z-10 flex-1 flex flex-col">
           <div className={`transition-all duration-800 ${isVisible ? "animate-slide-up" : "opacity-0 translate-y-10"}`}>
-            <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text animate-glow-pulse-text">Let's Connect</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-center mb-16 gradient-text animate-glow-pulse-text">{t("contact.title")}</h2>
 
             <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-              <div className="space-y-8">
-                <div className="text-left">
-                  <h3 className="text-2xl font-semibold mb-4">I'm all ears</h3>
+              <div className={cn("space-y-8", isAr ? "text-right" : "text-left")}>
+                <div className={isAr ? "text-right" : "text-left"}>
+                  <h3 className="text-2xl font-semibold mb-4">{t("contact.subtitle")}</h3>
                   <p className="text-muted-foreground text-lg leading-relaxed">
-                    I'm always interested in new opportunities and exciting projects. Whether you have a question or just
-                    want to say hi, I'll try my best to get back to you!
+                    {t("contact.description")}
                   </p>
                 </div>
 
                 <div className="space-y-4">
-                  <div className="flex items-center gap-4 group" ref={emailRef}>
+                  <div className={cn("flex items-center gap-4 group", isAr && "flex-row-reverse")}>
                     <div className="p-3 bg-primary/10 rounded-full">
                       <Mail className="h-5 w-5 text-primary" />
                     </div>
                     <div className="relative">
-                      <p className="font-medium">Email</p>
+                      <p className="font-medium">{t("contact.email")}</p>
                       <div
-                        className="flex items-center gap-2 cursor-pointer"
+                        className={cn("flex items-center gap-2 cursor-pointer", isAr && "flex-row-reverse")}
                         onClick={copyEmail}
                       >
                         <span className="text-muted-foreground hover:text-primary transition-colors">amrshaker842@gmail.com</span>
@@ -140,7 +139,7 @@ export function ContactSection() {
                                 initial={{ scale: 0.8, opacity: 0 }}
                                 animate={{ scale: 1, opacity: 1 }}
                                 exit={{ scale: 0.8, opacity: 0 }}
-                                className="absolute -right-6 -top-1"
+                                className={cn("absolute -top-1", isAr ? "-left-6" : "-right-6")}
                               >
                                 <Check className="w-4 h-4 text-green-500" />
                               </motion.span>
@@ -150,7 +149,7 @@ export function ContactSection() {
                                 initial={{ scale: 0.8, opacity: 0 }}
                                 animate={{ scale: 1, opacity: 1 }}
                                 exit={{ scale: 0.8, opacity: 0 }}
-                                className="absolute -right-6 -top-1 opacity-0 group-hover:opacity-100 transition-opacity"
+                                className={cn("absolute -top-1 opacity-0 group-hover:opacity-100 transition-opacity", isAr ? "-left-6" : "-right-6")}
                               >
                                 <Copy className="w-4 h-4 text-muted-foreground hover:text-primary" />
                               </motion.span>
@@ -162,36 +161,36 @@ export function ContactSection() {
                         <motion.div
                           initial={{ opacity: 0, y: 5 }}
                           animate={{ opacity: 1, y: 0 }}
-                          className="absolute -bottom-8 left-0 bg-primary text-primary-foreground text-xs px-2 py-1 rounded whitespace-nowrap"
+                          className={cn("absolute -bottom-8 bg-primary text-primary-foreground text-xs px-2 py-1 rounded whitespace-nowrap", isAr ? "right-0" : "left-0")}
                         >
-                          Copied to clipboard!
+                          {t("contact.copied")}
                         </motion.div>
                       )}
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4">
+                  <div className={cn("flex items-center gap-4", isAr && "flex-row-reverse")}>
                     <div className="p-3 bg-primary/10 rounded-full">
                       <Phone className="h-5 w-5 text-primary" />
                     </div>
                     <div>
-                      <p className="font-medium">Phone Number</p>
+                      <p className="font-medium">{t("contact.phone")}</p>
                       <p className="text-muted-foreground">+02 01207571028</p>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4">
+                  <div className={cn("flex items-center gap-4", isAr && "flex-row-reverse")}>
                     <div className="p-3 bg-primary/10 rounded-full">
                       <MapPin className="h-5 w-5 text-primary" />
                     </div>
                     <div>
-                      <p className="font-medium">Location</p>
-                      <p className="text-muted-foreground">Worldwide</p>
+                      <p className="font-medium">{t("contact.location")}</p>
+                      <p className="text-muted-foreground">{t("contact.locationValue")}</p>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 mt-8">
+                <div className={cn("flex items-center gap-4 mt-8", isAr && "flex-row-reverse")}>
                   <Button variant="outline" size="icon" className="hover:scale-110 transition-transform bg-primary/10 border-primary/20 hover:bg-primary/20" asChild>
                     <a
                       href="https://github.com/amrshaker000"
@@ -237,18 +236,18 @@ export function ContactSection() {
 
               <Card className="bg-transparent border-white/20 shadow-2xl shadow-blue-500/20 p-6 transition-all duration-300 hover:shadow-blue-500/30 animate-glow-pulse-card">
                 <CardHeader>
-                  <CardTitle>Send a Message</CardTitle>
+                  <CardTitle className={isAr ? "text-right" : "text-left"}>{t("contact.sendTitle")}</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <form onSubmit={handleFormSubmit(onSubmit)} className="space-y-6">
                     <div>
                       <Input
                         {...register("name")}
-                        placeholder="Your Name"
-                        className="bg-background/50 border-border/50 focus:border-primary transition-colors"
+                        placeholder={t("contact.namePlaceholder")}
+                        className={cn("bg-background/50 border-border/50 focus:border-primary transition-colors", isAr && "text-right")}
                       />
                       {errors.name && (
-                        <p className="text-destructive text-sm mt-1">{errors.name.message}</p>
+                        <p className={cn("text-destructive text-sm mt-1", isAr && "text-right")}>{errors.name.message}</p>
                       )}
                     </div>
 
@@ -256,23 +255,23 @@ export function ContactSection() {
                       <Input
                         {...register("email")}
                         type="email"
-                        placeholder="Your Email"
-                        className="bg-background/50 border-border/50 focus:border-primary transition-colors"
+                        placeholder={t("contact.emailPlaceholder")}
+                        className={cn("bg-background/50 border-border/50 focus:border-primary transition-colors", isAr && "text-right")}
                       />
                       {errors.email && (
-                        <p className="text-destructive text-sm mt-1">{errors.email.message}</p>
+                        <p className={cn("text-destructive text-sm mt-1", isAr && "text-right")}>{errors.email.message}</p>
                       )}
                     </div>
 
                     <div>
                       <Textarea
                         {...register("message")}
-                        placeholder="Your Message"
+                        placeholder={t("contact.messagePlaceholder")}
                         rows={5}
-                        className="bg-background/50 border-border/50 focus:border-primary transition-colors resize-none"
+                        className={cn("bg-background/50 border-border/50 focus:border-primary transition-colors resize-none", isAr && "text-right")}
                       />
                       {errors.message && (
-                        <p className="text-destructive text-sm mt-1">{errors.message.message}</p>
+                        <p className={cn("text-destructive text-sm mt-1", isAr && "text-right")}>{errors.message.message}</p>
                       )}
                     </div>
 
@@ -304,7 +303,7 @@ export function ContactSection() {
                               exit={{ opacity: 0, y: -20 }}
                               className="flex items-center justify-center w-full"
                             >
-                              <span className="mr-2">Message Sent!</span>
+                              <span className={cn(isAr ? "ml-2" : "mr-2")}>{t("contact.sent")}</span>
                               <Rocket className="h-5 w-5 animate-bounce" />
                             </motion.span>
                           ) : isSubmitting ? (
@@ -324,9 +323,9 @@ export function ContactSection() {
                                     ease: "linear"
                                   }
                                 }}
-                                className="inline-block h-4 w-4 border-2 border-current border-t-transparent rounded-full mr-2"
+                                className={cn("inline-block h-4 w-4 border-2 border-current border-t-transparent rounded-full", isAr ? "ml-2" : "mr-2")}
                               />
-                              Sending...
+                              {t("contact.sending")}
                             </motion.span>
                           ) : (
                             <motion.span
@@ -334,10 +333,10 @@ export function ContactSection() {
                               initial={{ opacity: 0, y: 10 }}
                               animate={{ opacity: 1, y: 0 }}
                               exit={{ opacity: 0, y: -10 }}
-                              className="flex items-center justify-center w-full group-hover:scale-105 transition-transform"
+                              className={cn("flex items-center justify-center w-full group-hover:scale-105 transition-transform", isAr && "flex-row-reverse")}
                             >
-                              Send Message
-                              <Send className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                              {t("contact.sendButton")}
+                              <Send className={cn("h-4 w-4 transition-transform", isAr ? "mr-2 group-hover:-translate-x-1 rotate-180" : "ml-2 group-hover:translate-x-1")} />
                             </motion.span>
                           )}
                         </AnimatePresence>
@@ -368,18 +367,16 @@ export function ContactSection() {
           </div>
         </div>
 
-
-
         {/* Footer - Positioned at bottom with spacing */}
         <footer className="relative mt-auto w-full z-20">
           <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
           <div className="backdrop-blur-md bg-background/30 py-6">
-            <div className="max-w-4xl mx-auto px-8 text-center flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className={cn("max-w-4xl mx-auto px-8 text-center flex flex-col md:flex-row items-center justify-between gap-4", isAr && "md:flex-row-reverse")}>
               <p className="text-muted-foreground text-sm font-medium">
-                © {new Date().getFullYear()} Amr Shaker. All rights reserved.
+                © {new Date().getFullYear()} Amr Shaker. {t("contact.rights")}
               </p>
-              <p className="text-muted-foreground text-sm flex items-center gap-2">
-                Built with
+              <p className={cn("text-muted-foreground text-sm flex items-center gap-2", isAr && "flex-row-reverse")}>
+                {t("contact.builtWith")}
                 <motion.span
                   animate={{
                     scale: [1, 1.2, 1],
@@ -393,7 +390,7 @@ export function ContactSection() {
                 >
                   ♥
                 </motion.span>
-                and Code
+                {t("contact.andCode")}
               </p>
             </div>
           </div>

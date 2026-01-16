@@ -7,6 +7,8 @@ import { motion } from "framer-motion"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 
+import { useLanguage } from "./language-provider"
+
 interface CertificationCardProps {
     title: string
     description: string
@@ -16,6 +18,7 @@ interface CertificationCardProps {
 }
 
 export function CertificationCard({ title, description, image, href, index }: CertificationCardProps) {
+    const { t } = useLanguage()
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -59,7 +62,7 @@ export function CertificationCard({ title, description, image, href, index }: Ce
                 <CardFooter className="pt-0">
                     <Button asChild variant="outline" className="w-full group/btn hover:bg-primary hover:text-primary-foreground transition-all duration-300">
                         <Link href={href} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
-                            <span>Show credential</span>
+                            <span>{t("certifications.show")}</span>
                             <ExternalLink className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
                         </Link>
                     </Button>
